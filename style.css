@@ -5,11 +5,12 @@
 }
 
 body {
-    color: orangered;
+    color: darkblue;
     display: flex;
     flex-direction: column;
     padding: 4rem;
     justify-content: space-evenly;
+    background-position: inherit;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* background: linear-gradient(rgb(34, 34, 34), gray, silver, white) */
@@ -41,6 +42,11 @@ footer {
 ul {
     list-style-type: none;
     text-transform: uppercase;
+    font-size: 1rem;
+}
+
+p {
+    font-size: 1.5em;
 }
 
 #pokemon-blurb {
@@ -59,17 +65,19 @@ ul {
 
 button {
     background: gray;
-    border-radius: 35%;
+    border-radius: 30%;
     color: black;
     font-size: 1.5rem;
+    padding: 1rem;
 }
 
 input {
     font-size: 1rem;
     size: 2rem;
+    padding: 1rem;
 }
 
 #background-button {
     background: gray;
-    border-radius: 35%;
+    border-radius: 30%;
 }
