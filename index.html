@@ -9,11 +9,11 @@
     <script defer src="script.js"></script>
     <!-- Rhiannon told me i need to define axios AFTER title for it to work -->
 </head>
-<body>
+<body class="gen5-bg">
 
     <h1>PokeFetcher!</h1>
 
-    <img id="pokemon-image">
+    <img class="pokeball-bg" id="pokemon-image">
 
     <ul class="pokemon-stats">
         <li id="pokemon-name"></li>
@@ -25,15 +25,20 @@
 
     <!-- Alternative -->
 
-    <p id="pokemon-description"></p>
-    <p id="flavor-text"></p>
+    <article class="pokemon-blurb">
+        <p id="pokemon-description"></p>
+        <p id="flavor-text"></p>
+    </article>
 
 
     <footer>
         <h6>Type Pkm name or ID below</h6>
         <input id= "input-bar" type="text"> 
         <button id= "fetch-button">Fetch that Pokemon!</button>
+        <button id= "background-button">Swap background</button>
     </footer>
+
+
 
 </body>
 </html>

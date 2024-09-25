@@ -11,6 +11,7 @@
 
 
 const button = document.querySelector("#fetch-button")
+const bgButton = document.querySelector("#background-button")
 const pokemonName = document.querySelector("#pokemon-name")
 const pokemonImage = document.querySelector("#pokemon-image")
 const PokemonID = document.querySelector('#pokemon-id')
@@ -20,6 +21,7 @@ const PokeWeight = document.querySelector('#pokemon-weight')
 const pokeTypes = document.querySelector('#pokemon-types')
 const pokeBlurb = document.querySelector('#pokemon-description')
 const pokeBio = document.querySelector('#flavor-text')
+const headerElement = document.querySelector('h1')
 
 // console.log(button, pokemonName, pokemonImage, inputBar)
 
@@ -47,7 +49,8 @@ button.addEventListener('click', async () => {
 
     // Setting text content
 
-    pokemonName.textContent = `name: ${response.data.name}`
+    pokemonName.textContent = `Name: ${response.data.name}`
+    headerElement.textContent = `${response.data.name}`
     PokemonID.textContent = `ID: ${response.data.id}`
     PokeHeight.textContent = `Height: ${response.data.height}`
     PokeWeight.textContent = `Weight: ${response.data.weight}`
@@ -69,7 +72,14 @@ button.addEventListener('click', async () => {
     pokeBlurb.textContent = `${response.data.name} is a ${typesAlone} type Pokemon that is ${response.data.height} tall and weighs ${response.data.weight}`
 })
 
-// Switch Pokemon image from sprite to official art and back, Come back to later 
+bgButton.addEventListener('click', () => {
+    pokemonImage.classList.toggle('gen5-bg')
+    pokemonImage.classList.toggle('pokeball-bg')
+    document.body.classList.toggle('pokeball-bg')
+    document.body.classList.toggle('gen5-bg')
+})
+
+/* Switch Pokemon image from sprite to official art and back, Come back to later  */
 
 // pokemonImage.addEventListener('click', async () => {
 //     let pokemon = inputBar.value
