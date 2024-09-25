@@ -1,0 +1,37 @@
+HTML -
+
+Centered square
+    Within square, cut down middle.
+    
+CSS
+    Align EVERYTHING in a column using flex
+    Pokedex/lab background for either full page or display box
+
+JavaScript- 
+
+    I am only interested in a pokemon's biological stats
+
+    Pull request should get the following for now:
+        Pokemon name (pokemon.name)
+        Pokedex ID (pokemon.id)
+        Type (response.types[i].type.name)
+
+            Must make a loop for type array to print BOTH
+                Consider adding into string for singular print
+            for (type of types) {console.log(type.type.name)}
+            Types is an array containing objects
+
+        Height (response.height)
+        Weight (response.height)
+        Sprite (response.sprites.front_default) 
+            Or official Artwork (response.sprites.other.official-artwork.front_default)
+        
+    Will add more stats as code is finalized if I have time
+
+    `https://pokeapi.co/api/v2/pokemon/${ditto}`
+
+const meats = ['chicken', 'briskit', 'pork']
+
+for (meat of meats) {
+    console.log(meat)
+}

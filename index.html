@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"
+    <title>PokeFetcher!</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="script.js"></script>
+    <!-- Rhiannon told me i need to define axios AFTER title for it to work -->
+</head>
+<body>
+
+    <h1>PokeFetcher!</h1>
+
+    <img id="pokemon-image">
+
+    <ul class="pokemon-stats">
+        <li id="pokemon-name"></li>
+        <li id="pokemon-id"></li>
+        <li id="pokemon-height"></li>
+        <li id="pokemon-weight"></li>
+        <li id="pokemon-types"></li>
+    </ul>
+
+    <!-- Alternative -->
+
+    <p id="pokemon-description"></p>
+    <p id="flavor-text"></p>
+
+
+    <footer>
+        <h6>Type Pkm name or ID below</h6>
+        <input id= "input-bar" type="text"> 
+        <button id= "fetch-button">Fetch that Pokemon!</button>
+    </footer>
+
+</body>
+</html>
