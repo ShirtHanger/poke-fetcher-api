@@ -2,6 +2,7 @@
 
 const button = document.querySelector("#fetch-button")
 const bgButton = document.querySelector("#background-button")
+const cryButton = document.querySelector('#cry-button')
 const pokemonName = document.querySelector("#pokemon-name")
 const pokemonImage = document.querySelector("#pokemon-image")
 const PokemonID = document.querySelector('#pokemon-id')
@@ -96,3 +97,15 @@ pokemonImage.addEventListener('click', async () => {
 I believe it's a syntax problem, fixed by simply calling the specific string */
 
 /* https://chatgpt.com/share/66f4b1e1-02d8-8012-8fb6-7650c50c87b8 */
+
+/* Play Pokemon Cry, to be fixed, currently returns error, claims .play() is not a function */
+
+cryButton.addEventListener('click', async () => {
+    let pokemon = pokemonImage.alt
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    let PokeID = response.data.id
+    console.log(pokemon)
+    let responseCry = await axios.get(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${PokeID}.ogg`)
+    console.log(responseCry)
+    responseCry.play()
+})
