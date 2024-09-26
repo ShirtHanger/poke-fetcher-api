@@ -1,42 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap');
-
-* {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 body {
     color: darkblue;
     display: flex;
     flex-direction: column;
     padding: 4rem;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-position: inherit;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    /* background: linear-gradient(rgb(34, 34, 34), gray, silver, white) */
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
 }
 
-h1 {
+.info-container {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 0rem;
+    border-bottom: 3px groove red;
+    padding-bottom: 1rem;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.left-side {
+    font-size: 2rem;
+    padding-right: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 0rem;
+}
+
+.pokemon-stats {
+    padding-left: 3rem;
+    margin: 0rem;
+    font-size: 1.5rem;
+    align-self: center;
+}
+
+h1, #pokemon-name {
     font-style: bold;
-    font-size: 5rem;
-    text-decoration: overline;
+    font-size: 2rem;
+    text-decoration: overline underline;
     text-transform: uppercase;
-    text-shadow: 1rem goldenrod;
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
 }
 
 #pokemon-image {
     padding: 0rem;
     margin-bottom: 0rem;
-    border: 2px solid gold;
-    border-radius: 50%;
-}
-
-footer {
-    display: flex;
-    flex-direction: column;
+    /* border: 2px solid gold; */
+    border-radius: 40%;
 }
 
 ul {
@@ -45,14 +66,48 @@ ul {
     font-size: 1rem;
 }
 
-p {
-    font-size: 1.5em;
+li {
+    padding: 1rem;
 }
 
-#pokemon-blurb {
-    font-family: "Pixelify Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 100;
+.pokemon-blurb {
+    font-size: 1.4rem;
+    border-bottom: 3px groove red;
+}
+
+footer {
+    color: black;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    border-radius: 20%;
+    border: 2px dashed black;
+    margin-top: 1rem;
+}
+
+h6 {
+    font-size: 1rem;
+    
+}
+
+button {
+    margin: auto;
+    background: gray;
+    border-radius: 15%;
+    color: black;
+    font-size: 1.7rem;
+    padding: 1rem;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+
+input {
+    margin: auto;
+    font-size: 1.6rem;
+    size: 1rem;
+    padding: 0.5rem;
 }
 
 .pokeball-bg {
@@ -60,24 +115,5 @@ p {
 }
 
 .gen5-bg {
-    background: linear-gradient(silver, gray, lightgray, rgb(34, 34, 34))
-}
-
-button {
-    background: gray;
-    border-radius: 30%;
-    color: black;
-    font-size: 1.5rem;
-    padding: 1rem;
-}
-
-input {
-    font-size: 1rem;
-    size: 2rem;
-    padding: 1rem;
-}
-
-#background-button {
-    background: gray;
-    border-radius: 30%;
+    background: linear-gradient(rgb(10, 10, 10), gray, lightgray, rgb(22, 22, 22))
 }

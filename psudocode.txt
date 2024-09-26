@@ -36,4 +36,4 @@ for (meat of meats) {
     console.log(meat)
 }
 
-The measurements are in decameters and decagrams…. Pikachu should be .4Meters tall… Which is an objectively stupid measurement for an API
+The measurements are in decameters and decagrams….

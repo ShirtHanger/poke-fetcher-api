@@ -1,14 +1,4 @@
-// const getPokemon = async () => {
-//     let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
-//     console.log(pokemon.data)
-// }
-
-// getPokemon()
-
-
-
-
-
+/* HTML elements */
 
 const button = document.querySelector("#fetch-button")
 const bgButton = document.querySelector("#background-button")
@@ -23,7 +13,7 @@ const pokeBlurb = document.querySelector('#pokemon-description')
 const pokeBio = document.querySelector('#flavor-text')
 const headerElement = document.querySelector('h1')
 
-// console.log(button, pokemonName, pokemonImage, inputBar)
+/* Event listeners */
 
 button.addEventListener('click', async () => {
     let pokemon = inputBar.value.toLowerCase()
@@ -39,22 +29,22 @@ button.addEventListener('click', async () => {
     let speciesResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
     console.log(speciesResponse)
 
-    // 
+    // Sets Pokemon picture
 
     let pokePic = response.data.sprites.front_default
-
     pokemonImage.setAttribute ('src', pokePic)
+    pokemonImage.setAttribute ('alt', pokemon) // Allows me to swap to official art and other sprites should I choose
 
-    let flavorTextArray = speciesResponse.data.flavor_text_entries
+    let trueHeight = response.data.height *= 10
+    let trueWeight = response.data.weight /= 10
 
-    // Setting text content
+    // Setting text content above flavor text
 
-    pokemonName.textContent = `Name: ${response.data.name}`
+    pokemonName.textContent = `${response.data.name}`
     headerElement.textContent = `${response.data.name}`
-    PokemonID.textContent = `ID: ${response.data.id}`
-    PokeHeight.textContent = `Height: ${response.data.height}`
-    PokeWeight.textContent = `Weight: ${response.data.weight}`
-    pokeBio.textContent = flavorTextArray[1].flavor_text
+    PokemonID.textContent = `# ${response.data.id}`
+    PokeHeight.textContent = `Height: ${trueHeight} cm`
+    PokeWeight.textContent = `Weight: ${trueWeight} kg`
 
     // Prints one or two types depending on if pokemon has one or two types
 
@@ -67,10 +57,19 @@ button.addEventListener('click', async () => {
         typesAlone += `${typeObject.type.name} `
     }
 
-    console.log(pokePic)
+
     
-    pokeBlurb.textContent = `${response.data.name} is a ${typesAlone} type Pokemon that is ${response.data.height} tall and weighs ${response.data.weight}`
+    pokeBlurb.textContent = `${response.data.name.toUpperCase()} is a ${typesAlone} type Pokemon that 
+    is ${trueHeight}cm tall and weighs ${trueWeight}kg`
+
+    // Sets flavor text
+    let flavorTextArray = speciesResponse.data.flavor_text_entries
+    
+    pokeBio.textContent = flavorTextArray[1].flavor_text
+
 })
+
+// Swaps Pokemon bubble and background color gradiants between Generation 5 and Pokeball inspired gradiants
 
 bgButton.addEventListener('click', () => {
     pokemonImage.classList.toggle('gen5-bg')
@@ -79,15 +78,21 @@ bgButton.addEventListener('click', () => {
     document.body.classList.toggle('gen5-bg')
 })
 
-/* Switch Pokemon image from sprite to official art and back, Come back to later  */
+/* Tried to make a listenter to Switch Pokemon image from sprite to official art  */
 
-// pokemonImage.addEventListener('click', async () => {
-//     let pokemon = inputBar.value
-//     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
-//     if (pokePic === response.data.sprites.front_default) {
-//         pokePic = response.data.sprites.other.officialartwork.front_default
-//     } else {
-//         pokePic = response.data.sprites.front_default
-//     }
-//     pokemonImage.setAttribute ('src', pokePic)
-// })
+pokemonImage.addEventListener('click', async () => {
+    let pokemon = pokemonImage.alt
+    console.log(pokemon)
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
+    let pokeArt = response.data.sprites.other['official-artwork'].front_default
+    console.log(pokeArt)
+    pokemonImage.setAttribute ('src', pokeArt)
+})
+
+/* ChatGPT helped clarify line 87 (Line before console logging and setting pokemonArt) for me, */
+
+
+/* Kept getting errors with 'response.data.sprites.other.official-artwork.front_default' 
+I believe it's a syntax problem, fixed by simply calling the specific string */
+
+/* https://chatgpt.com/share/66f4b1e1-02d8-8012-8fb6-7650c50c87b8 */

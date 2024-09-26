@@ -10,20 +10,21 @@
     <!-- Rhiannon told me i need to define axios AFTER title for it to work -->
 </head>
 <body class="gen5-bg">
-
-    <h1>PokeFetcher!</h1>
-
-    <img class="pokeball-bg" id="pokemon-image">
-
-    <ul class="pokemon-stats">
-        <li id="pokemon-name"></li>
-        <li id="pokemon-id"></li>
-        <li id="pokemon-height"></li>
-        <li id="pokemon-weight"></li>
-        <li id="pokemon-types"></li>
-    </ul>
-
-    <!-- Alternative -->
+    <div class="info-container">
+        <div class="left-side">
+            <h1>PokeFetcher!</h1>
+        
+            <img class="pokeball-bg" id="pokemon-image">
+        </div>
+    
+        <ul class="pokemon-stats">
+            <li id="pokemon-name"></li>
+            <li id="pokemon-id"></li>
+            <li id="pokemon-height"></li>
+            <li id="pokemon-weight"></li>
+            <li id="pokemon-types"></li>
+        </ul>
+    </div>
 
     <article class="pokemon-blurb">
         <p id="pokemon-description"></p>
@@ -36,10 +37,8 @@
         <input id= "input-bar" type="text"> 
         <button id= "fetch-button">Fetch that Pokemon!</button>
         <button id= "background-button">Swap background</button>
-        <button id="cry-botton">Pokemon Cry (TBA)</button>
+        <p>(Click on sprite for a surprise)</p>
     </footer>
-
-
 
 </body>
 </html>
