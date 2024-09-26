@@ -11,7 +11,7 @@ body {
     /* https://www.w3schools.com/html/html_images_background.asp */
     /* Looked at "Background stretch" */
     background-attachment: fixed;
-    background-size: 100% 100%;
+    background-size: auto;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-family: "VT323", monospace;
