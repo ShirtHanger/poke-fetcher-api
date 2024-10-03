@@ -3,6 +3,7 @@
 const button = document.querySelector("#fetch-button")
 const bgButton = document.querySelector("#background-button")
 const cryButton = document.querySelector('#cry-button')
+const randomButton = document.querySelector('#random-button')
 const pokemonName = document.querySelector("#pokemon-name")
 const pokemonImage = document.querySelector("#pokemon-image")
 const PokemonID = document.querySelector('#pokemon-id')
@@ -30,43 +31,8 @@ button.addEventListener('click', async () => {
     let speciesResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${pokemon}/`)
     console.log(speciesResponse)
 
-    // Sets Pokemon picture
-
-    let pokePic = response.data.sprites.front_default
-    pokemonImage.setAttribute ('src', pokePic)
-    pokemonImage.setAttribute ('alt', pokemon) // Allows me to swap to official art and other sprites should I choose
-
-    let trueHeight = response.data.height *= 10
-    let trueWeight = response.data.weight /= 10
-
-    // Setting text content above flavor text
-
-    pokemonName.textContent = `${response.data.name}`
-    headerElement.textContent = `${response.data.name}`
-    PokemonID.textContent = `# ${response.data.id}`
-    PokeHeight.textContent = `Height: ${trueHeight} cm`
-    PokeWeight.textContent = `Weight: ${trueWeight} kg`
-
-    // Prints one or two types depending on if pokemon has one or two types
-
-    let typesArray = response.data.types
-    pokeTypes.textContent = 'Type(s): '
-    let typesAlone = ''
-
-    for (typeObject of typesArray) {
-        pokeTypes.append(`[${typeObject.type.name}] `)
-        typesAlone += `${typeObject.type.name} `
-    }
-
-
-    
-    pokeBlurb.textContent = `${response.data.name.toUpperCase()} is a ${typesAlone} type Pokemon that 
-    is ${trueHeight}cm tall and weighs ${trueWeight}kg`
-
-    // Sets flavor text
-    let flavorTextArray = speciesResponse.data.flavor_text_entries
-    
-    pokeBio.textContent = flavorTextArray[1].flavor_text
+    setPokeData(response.data, pokemon)
+    setFlavorText(speciesResponse.data)
 
 })
 
@@ -109,3 +75,74 @@ cryButton.addEventListener('click', async () => {
     console.log(responseCry)
     responseCry.play()
 })
+
+randomButton.addEventListener('click', async () => {
+
+    let maximumPokemon = 1025 /* API doesn't have this for some reason */
+    console.log('Total number of pokemon:', maximumPokemon) 
+    console.log('=================') 
+    randomPokeID = randNum(maximumPokemon)
+    console.log('Random Pokemon ID:', randomPokeID)
+
+    let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${randomPokeID}`)
+    console.log(response) 
+
+    // Collects Pokemon API species data, I only use this for flavor text
+
+    let speciesResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${randomPokeID}/`)
+    console.log(speciesResponse)
+
+    setPokeData(response.data, randomPokeID)
+    setFlavorText(speciesResponse.data)
+
+})
+
+function randNum(maxNum) {
+    /* Returns a random number between 0 and the length of given array */
+    /* Used for when multiple heroes are returned for search result*/
+
+    randIndex = Math.floor(Math.random() * maxNum) // Copied this from my Pokemon Album Prework, edited for this
+    return randIndex
+  }
+
+function setPokeData(pokemonDataDrill, pokemonNameOrID) {
+    let pokePic = pokemonDataDrill.sprites.front_default
+    pokemonImage.setAttribute ('src', pokePic)
+    pokemonImage.setAttribute ('alt', pokemonNameOrID) // Allows me to swap to official art and other sprites should I choose
+
+    let trueHeight = pokemonDataDrill.height *= 10
+    let trueWeight = pokemonDataDrill.weight /= 10
+
+    // Setting text content above flavor text
+
+    pokemonName.textContent = `${pokemonDataDrill.name}`
+    headerElement.textContent = `${pokemonDataDrill.name}`
+    PokemonID.textContent = `# ${pokemonDataDrill.id}`
+    PokeHeight.textContent = `Height: ${trueHeight} cm`
+    PokeWeight.textContent = `Weight: ${trueWeight} kg`
+
+    // Prints one or two types depending on if pokemon has one or two types
+
+    let typesArray = pokemonDataDrill.types
+    pokeTypes.textContent = 'Type(s): '
+    let typesAlone = ''
+
+    for (typeObject of typesArray) {
+        pokeTypes.append(`[${typeObject.type.name}] `)
+        typesAlone += `${typeObject.type.name} `
+    }
+
+
+    
+    pokeBlurb.textContent = `${pokemonDataDrill.name.toUpperCase()} is a ${typesAlone} type Pokemon that 
+    is ${trueHeight}cm tall and weighs ${trueWeight}kg`
+
+}
+
+function setFlavorText(pokemonSpeciesDataDrill) {
+    // Sets flavor text
+    let flavorTextArray = pokemonSpeciesDataDrill.flavor_text_entries
+    
+    pokeBio.textContent = flavorTextArray[1].flavor_text
+    /* Sets a pokemon's data based on API pull */
+}
