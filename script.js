@@ -71,9 +71,11 @@ cryButton.addEventListener('click', async () => {
     let response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)
     let PokeID = response.data.id
     console.log(pokemon)
-    let responseCry = await axios.get(`https://raw.githubusercontent.com/PokeAPI/cries/main/cries/pokemon/latest/${PokeID}.ogg`)
-    console.log(responseCry)
-    responseCry.play()
+    console.log(PokeID) 
+    const pokeCry = new Audio(response.data.cries.latest) /* Sara Searson told me about this */
+    /* This contains more than one audio file usually, consider adding more later */
+    console.log(pokeCry)
+    pokeCry.play()
 })
 
 randomButton.addEventListener('click', async () => {
