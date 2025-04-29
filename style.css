@@ -81,7 +81,6 @@ li {
 
 footer {
     color: black;
-    margin: auto;
     display: flex;
     flex-direction: column;
     background-color: gray;
@@ -89,6 +88,16 @@ footer {
     border: 2px dashed black;
     margin-top: 1rem;
 }
+
+/* .pokemon-stats {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(green, red, black);
+    background: linear-gradient(rgb(10, 10, 10), gray, lightgray, rgb(22, 22, 22));
+    border-radius: 20%;
+    border: 2px dashed black;
+    margin-top: 1rem;
+} */
 
 h6 {
     font-size: 1rem;
@@ -122,5 +131,15 @@ input {
 }
 
 .gen5-bg {
-    background: linear-gradient(rgb(10, 10, 10), gray, lightgray, rgb(22, 22, 22))
+    background: linear-gradient(rgb(10, 10, 10), gray, lightgray, rgb(22, 22, 22));
+}
+
+/* Placeholder radial gradiants */
+
+.pokeball-bg-radial {
+    background: radial-gradient(red, black, silver, black, silver);
+}
+
+.gen5-bg-radial {
+    background: radial-gradient(rgb(10, 10, 10), gray, lightgray, rgb(22, 22, 22));
 }

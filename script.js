@@ -13,7 +13,7 @@ const PokeWeight = document.querySelector('#pokemon-weight')
 const pokeTypes = document.querySelector('#pokemon-types')
 const pokeBlurb = document.querySelector('#pokemon-description')
 const pokeBio = document.querySelector('#flavor-text')
-const headerElement = document.querySelector('h1')
+const mainPokemonName = document.querySelector('#main-pokemon-name')
 
 /* Event listeners */
 
@@ -39,6 +39,8 @@ button.addEventListener('click', async () => {
 // Swaps Pokemon bubble and background color gradiants between Generation 5 and Pokeball inspired gradiants
 
 bgButton.addEventListener('click', () => {
+    // pokemonImage.classList.toggle('gen5-bg-radial')
+    // pokemonImage.classList.toggle('pokeball-bg-radial')
     pokemonImage.classList.toggle('gen5-bg')
     pokemonImage.classList.toggle('pokeball-bg')
     document.body.classList.toggle('pokeball-bg')
@@ -118,7 +120,6 @@ function setPokeData(pokemonDataDrill, pokemonNameOrID) {
     // Setting text content above flavor text
 
     pokemonName.textContent = `${pokemonDataDrill.name}`
-    headerElement.textContent = `${pokemonDataDrill.name}`
     PokemonID.textContent = `# ${pokemonDataDrill.id}`
     PokeHeight.textContent = `Height: ${trueHeight} cm`
     PokeWeight.textContent = `Weight: ${trueWeight} kg`
